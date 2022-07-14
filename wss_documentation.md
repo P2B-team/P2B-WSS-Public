@@ -62,7 +62,9 @@ Is 3 types of markets.
 
 Further, in the documentation: btc-like, eth-like, or oth-like market.
 
-Requests have the general format:
+Connection will be closed by server in cause of inactivity after 60s.
+
+JSON Structure of request message:
 ```
 {"method":"method_name","params":[arg_1, arg_2, arg_n],"id":arbitrary_integer}
 ```
@@ -713,7 +715,7 @@ Update message example:
 
 - - -
 
-### Unsubscription to deals update for eth-like markets
+### Unsubscription to deals update for oth-like markets
 > Params: none
 
 Request example:
