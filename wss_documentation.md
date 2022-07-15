@@ -40,7 +40,7 @@
     - [Subscription to deals update for eth-like markets](#subscription-to-deals-update-for-eth-like-markets)
     - [Unsubscription to deals update for eth-like markets](#unsubscription-to-deals-update-for-eth-like-markets)
     - [Subscription to deals update for oth-like markets](#subscription-to-deals-update-for-oth-like-markets)
-    - [Unsubscription to deals update for eth-like markets](#unsubscription-to-deals-update-for-eth-like-markets-1)
+    - [Unsubscription to deals update for oth-like markets](#unsubscription-to-deals-update-for-oth-like-markets)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -104,13 +104,14 @@ Response example:
 ```
 {
     "error": null,
-    "result": 1657618658,   //timestamp
+    "result": 1657618658,   //time in seconds since 1970-01-01
     "id": 2
 }
 ```
 
 ## Subscribing/unsubscribing to depth update for market
-Market status for last 24 hours
+
+- - -
 
 ### Subscription to depth update for market
 > Params: market, limit, interval
@@ -119,7 +120,7 @@ Market status for last 24 hours
 |---|---|---|---|
 |market   |String   |Yes   |Markets for subscribe. Subscription is possible for one market in single-stream   |
 |limit  |Integer   |Yes   |The value cannot be less than **1** and more than **100**
-|interval   |String   |Yes   |Valid values: 0, 0.00000001, 0.0000001, 0.000001, 0.00001, 0.0001, 0.001, 0.01, 0.1.  |
+|interval   |String   |Yes   |Valid values: 0, 0.00000001, 0.0000001, 0.000001, 0.00001, 0.0001, 0.001, 0.01, 0.1. Interval of precision for order merge.  |
 
 Request example:
 ```
@@ -131,7 +132,7 @@ Update message example:
 {
     "method": "depth.update",
     "params": [
-        false,
+        false,                          // last depth cleaning is now or not
         {
             "asks": [                   // side
                 [
@@ -431,9 +432,10 @@ Request example:
 
 - - -
 
-
 ## Subscribing/unsubscribing to state update
 Market status for last 24 hours
+
+- - -
 
 ### Subscription to the state update for btc-like markets
 > Params: btc_like_market1, btc_like_market2, ...
@@ -581,7 +583,8 @@ Request example:
 - - -
 
 ## Subscribing/unsubscribing to deals update for markets
-Market status for last 24 hours
+
+- - -
 
 ### Subscription to deals update for btc-like markets
 > Params: btc_like_market1, btc_like_market2, ...
@@ -632,8 +635,10 @@ Request example:
 {"method":"deals.unsubscribe_btc","params":[],"id":27}
 ```
 
+- - -
+
 ### Subscription to deals update for eth-like markets
-> Params: btc_like_market1, btc_like_market2, ...
+> Params: eth_like_market1, eth_like_market2, ...
 
 |Name  |Type   |Mandatory   |Description     |
 |---|---|---|---|
@@ -681,8 +686,10 @@ Request example:
 {"method":"deals.unsubscribe_eth","params":[],"id":29}
 ```
 
+- - -
+
 ### Subscription to deals update for oth-like markets
-> Params: btc_like_market1, btc_like_market2, ...
+> Params: oth_like_market1, oth_like_market2, ...
 
 |Name  |Type   |Mandatory   |Description     |
 |---|---|---|---|
