@@ -2,7 +2,7 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [P2PB2B WSS Public (14.07.2022)](#p2pb2b-wss-public-14072022)
+- [P2B WSS Public (14.07.2022)](#p2b-wss-public-14072022)
   - [General WSS information](#general-wss-information)
   - [Ping and server time query](#ping-and-server-time-query)
     - [Ping](#ping)
@@ -44,7 +44,7 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-# P2PB2B WSS Public (14.07.2022)
+# P2B WSS Public (14.07.2022)
 
 - - -
 
