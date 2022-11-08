@@ -2,67 +2,40 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [P2B WSS Public (14.07.2022)](#p2b-wss-public-14072022)
-  - [General WSS information](#general-wss-information)
-  - [Ping and server time query](#ping-and-server-time-query)
+- [P2B WSS](#p2b-wss)
+  - [General information](#general-information)
+  - [Ping and server time](#ping-and-server-time)
     - [Ping](#ping)
     - [Server time](#server-time)
-  - [Subscribing/unsubscribing to depth update for market](#subscribingunsubscribing-to-depth-update-for-market)
-    - [Subscription to depth update for market](#subscription-to-depth-update-for-market)
-    - [Unsubscription to depth update for market](#unsubscription-to-depth-update-for-market)
-  - [Subscribing/unsubscribing to the last price for markets](#subscribingunsubscribing-to-the-last-price-for-markets)
-    - [Subscription to last price updating for btc-like markets](#subscription-to-last-price-updating-for-btc-like-markets)
-    - [Unsubscription to last price updating for btc-like markets](#unsubscription-to-last-price-updating-for-btc-like-markets)
-    - [Subscription to last price updating for eth-like markets](#subscription-to-last-price-updating-for-eth-like-markets)
-    - [Unsubscription to last price updating for eth-like markets](#unsubscription-to-last-price-updating-for-eth-like-markets)
-    - [Subscription to last price updating for oth-like markets](#subscription-to-last-price-updating-for-oth-like-markets)
-    - [Unsubscription to last price updating for oth-like markets](#unsubscription-to-last-price-updating-for-oth-like-markets)
-    - [Unsubscription to last price updating for all markets types](#unsubscription-to-last-price-updating-for-all-markets-types)
-  - [Subscribing/unsubscribing to the last kline (candlestick) bars for market](#subscribingunsubscribing-to-the-last-kline-candlestick-bars-for-market)
-    - [Subscription to the last kline (candlestick) bars for btc-like market](#subscription-to-the-last-kline-candlestick-bars-for-btc-like-market)
-    - [Unsubscription to the last kline (candlestick) bars for btc-like market](#unsubscription-to-the-last-kline-candlestick-bars-for-btc-like-market)
-    - [Subscription to the last kline (candlestick) bars for eth-like market](#subscription-to-the-last-kline-candlestick-bars-for-eth-like-market)
-    - [Unsubscription to the last kline (candlestick) bars for eth-like market](#unsubscription-to-the-last-kline-candlestick-bars-for-eth-like-market)
-    - [Subscription to the last kline (candlestick) bars for oth-like market](#subscription-to-the-last-kline-candlestick-bars-for-oth-like-market)
-    - [Unsubscription to the last kline (candlestick) bars for oth-like market](#unsubscription-to-the-last-kline-candlestick-bars-for-oth-like-market)
-    - [Unsubscription to the last kline (candlestick) bars for all market types](#unsubscription-to-the-last-kline-candlestick-bars-for-all-market-types)
-  - [Subscribing/unsubscribing to state update](#subscribingunsubscribing-to-state-update)
-    - [Subscription to the state update for btc-like markets](#subscription-to-the-state-update-for-btc-like-markets)
-    - [Unsubscription to the state update for btc-like markets](#unsubscription-to-the-state-update-for-btc-like-markets)
-    - [Subscription to the state update for eth-like markets](#subscription-to-the-state-update-for-eth-like-markets)
-    - [Unsubscription to the state update for eth-like markets](#unsubscription-to-the-state-update-for-eth-like-markets)
-    - [Subscription to the state update for oth-like markets](#subscription-to-the-state-update-for-oth-like-markets)
-    - [Unsubscription to the state update for oth-like markets](#unsubscription-to-the-state-update-for-oth-like-markets)
-    - [Unsubscription to the state update for all markets](#unsubscription-to-the-state-update-for-all-markets)
-  - [Subscribing/unsubscribing to deals update for markets](#subscribingunsubscribing-to-deals-update-for-markets)
-    - [Subscription to deals update for btc-like markets](#subscription-to-deals-update-for-btc-like-markets)
-    - [Unsubscription to deals update for btc-like markets](#unsubscription-to-deals-update-for-btc-like-markets)
-    - [Subscription to deals update for eth-like markets](#subscription-to-deals-update-for-eth-like-markets)
-    - [Unsubscription to deals update for eth-like markets](#unsubscription-to-deals-update-for-eth-like-markets)
-    - [Subscription to deals update for oth-like markets](#subscription-to-deals-update-for-oth-like-markets)
-    - [Unsubscription to deals update for oth-like markets](#unsubscription-to-deals-update-for-oth-like-markets)
+  - [Depth of market](#depth-of-market)
+    - [Subscribe](#subscribe)
+    - [Unsubscribe](#unsubscribe)
+  - [Last price](#last-price)
+    - [Subscribe](#subscribe-1)
+    - [Unsubscribe](#unsubscribe-1)
+  - [Kline (candlestick)](#kline-candlestick)
+    - [Subscribe](#subscribe-2)
+    - [Unsubscribe](#unsubscribe-2)
+  - [Market status](#market-status)
+    - [Subscribe](#subscribe-3)
+    - [Unsubscribe](#unsubscribe-3)
+  - [Deals](#deals)
+    - [Subscribe](#subscribe-4)
+    - [Unsubscribe](#unsubscribe-4)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-# P2B WSS Public (14.07.2022)
+# P2B WSS
 
 - - -
 
-## General WSS information
+## General information
 
 - - -
 
 The base endpoint is: **wss://apiws.p2pb2b.com/**
 
-For subscribe to price, kline, state, 
-Is 3 types of markets. 
-* If market like TICKER_BTC - is BTC market type, e.g. ETH_BTC, BNB_BTC, etc;
-* If market like TICKER_ETH - is ETH market type. e.g. BNB_ETH, WAVES_ETH, etc;
-* All other markets - is OTH market type, e.g. BTC_USDT, ETH_BUSD, etc.
-
-Further, in the documentation: btc-like, eth-like, or oth-like market.
-
-Connection will be closed by server in cause of inactivity after 60s.
+Connection will be closed by server in cause of inactivity after 100 seconds.
 
 JSON Structure of request message:
 ```
@@ -71,7 +44,7 @@ JSON Structure of request message:
 
 - - -
 
-## Ping and server time query
+## Ping and server time
 
 - - -
 
@@ -97,7 +70,7 @@ Response example:
 ### Server time
 Request example:
 ```
-{"method":"server.time","params":[],"id":2}
+{"method":"server.time","params":[],"id":1}
 ```
 
 Response example:
@@ -109,22 +82,22 @@ Response example:
 }
 ```
 
-## Subscribing/unsubscribing to depth update for market
+## Depth of market
 
 - - -
 
-### Subscription to depth update for market
+### Subscribe
 > Params: market, limit, interval
 
 |Name  |Type   |Mandatory   |Description     |
 |---|---|---|---|
-|market   |String   |Yes   |Markets for subscribe. Subscription is possible for one market in single-stream   |
+|market   |String   |Yes   |Markets for subscribe   |
 |limit  |Integer   |Yes   |The value cannot be less than **1** and more than **100**
-|interval   |String   |Yes   |Valid values: 0, 0.00000001, 0.0000001, 0.000001, 0.00001, 0.0001, 0.001, 0.01, 0.1. Interval of precision for order merge.  |
+|interval   |String   |Yes   |Valid values: 0, 0.00000001, 0.0000001, 0.000001, 0.00001, 0.0001, 0.001, 0.01, 0.1. Interval of precision for order.  |
 
 Request example:
 ```
-{"method":"depth.subscribe","params":["BTC_USDT", 10, "0"],"id":3}
+{"method":"depth.subscribe","params":["BTC_USDT", 10, "0"],"id":1}
 ```
 
 Update message example:
@@ -132,7 +105,7 @@ Update message example:
 {
     "method": "depth.update",
     "params": [
-        false,                          // last depth cleaning is now or not
+        false,                          // true - all records, false - new records
         {
             "asks": [                   // side
                 [
@@ -147,25 +120,28 @@ Update message example:
 }
 ```
 
+- the "true" flag sends each 60 seconds
+- the "false" flag sends each 1 second
+
+
 - - -
 
-### Unsubscription to depth update for market
+### Unsubscribe
 > Params: none
 
 Request example:
 ```
-{"method":"depth.unsubscribe","params":[],"id":4}
+{"method":"depth.unsubscribe","params":[],"id":1}
 ```
 
 - - -
 
-## Subscribing/unsubscribing to the last price for markets
-Is used to get the last price for the market. Update messages are pushed if the price is updated.
-Available subscription for more than one market.
+## Last price
+
 - - -
 
-### Subscription to last price updating for btc-like markets
-> Params: btc_like_market1, btc_like_market2, ...
+### Subscribe
+> Params: market1, market2, ...
 
 |Name  |Type   |Mandatory   |Description     |
 |---|---|---|---|
@@ -174,7 +150,7 @@ Available subscription for more than one market.
 
 Request example:
 ```
-{"method":"price.subscribe_btc","params":["ETH_BTC"],"id":5}
+{"method":"price.subscribe","params":["ETH_BTC", "BTC_USDT", "ETH_BUSD"],"id":1}
 ```
 
 Update message example:
@@ -191,113 +167,31 @@ Update message example:
 
 - - -
 
-### Unsubscription to last price updating for btc-like markets
+### Unsubscribe
 > Params: none
 
 Request example:
 ```
-{"method":"price.unsubscribe_btc","params":[],"id":6}
+{"method":"price.unsubscribe","params":[],"id":1}
 ```
 
 - - -
 
-### Subscription to last price updating for eth-like markets
-> Params: eth_like_market1, eth_like_market2, ...
+## Kline (candlestick)
+
+- - -
+
+### Subscribe
+> Params: market, period
 
 |Name  |Type   |Mandatory   |Description     |
 |---|---|---|---|
-|market   |String   |Yes   |Markets for subscribe. Subscription is possible for several markets in single-stream  |
+|market   |String   |Yes   |Market for subscribe. Subscription is possible for single market in single-stream   |
+|period   |Integer   |Yes   |Kline/Candlestick chart intervals: 900, 1800, 3600, 86400 in seconds  |
 
 Request example:
 ```
-{"method":"price.subscribe_eth","params":["LTC_ETH"],"id":7}
-```
-
-Update message example:
-```
-{
-    "method": "price.update",
-    "params": [
-        "LTC_ETH",
-        "0.04509"
-    ],
-    "id": null
-}
-```
-
-- - -
-
-### Unsubscription to last price updating for eth-like markets
-> Params: none
-
-Request example:
-```
-{"method":"price.unsubscribe_eth","params":[],"id":8}
-```
-
-- - -
-
-### Subscription to last price updating for oth-like markets
-> Params: oth_like_market1, oth_like_market2, ...
-
-|Name  |Type   |Mandatory   |Description     |
-|---|---|---|---|
-|market   |String   |Yes   |Markets for subscribe. Subscription is possible for several markets in single-stream  |
-
-Request example:
-```
-{"method":"price.subscribe_oth","params":["BTC_BUSD"],"id":9}
-```
-
-Update message example:
-```
-{
-    "method": "price.update",
-    "params": [
-        "BTC_BUSD",
-        "19639.94"
-    ],
-    "id": null
-}
-```
-
-- - -
-
-### Unsubscription to last price updating for oth-like markets
-> Params: none
-
-Request example:
-```
-{"method":"price.unsubscribe_oth","params":[],"id":10}
-```
-
-- - -
-
-### Unsubscription to last price updating for all markets types
-> Params: none
-
-Request example:
-```
-{"method":"price.unsubscribe_all","params":[],"id":11}
-```
-
-- - -
-
-## Subscribing/unsubscribing to the last kline (candlestick) bars for market
-
-- - -
-
-### Subscription to the last kline (candlestick) bars for btc-like market
-> Params: btc_like_market, period
-
-|Name  |Type   |Mandatory   |Description     |
-|---|---|---|---|
-|market   |String   |Yes   |Market for subscribe. Subscription is possible for one market in single-stream   |
-|period   |Integer   |Yes   |Kline/Candlestick chart intervals: 900, 1800, 3600, 86400   |
-
-Request example:
-```
-{"method":"kline.subscribe_btc","params":["ETH_BTC", 3600],"id":12}
+{"method":"kline.subscribe","params":["ETH_BTC", 3600],"id":1}
 ```
 
 Update message example:
@@ -322,123 +216,23 @@ Update message example:
 
 - - -
 
-### Unsubscription to the last kline (candlestick) bars for btc-like market
+### Unsubscribe
 > Params: none
 
 Request example:
 ```
-{"method":"kline.unsubscribe_btc","params":[],"id":13}
+{"method":"kline.unsubscribe","params":[],"id":1}
 ```
 
 - - -
 
-### Subscription to the last kline (candlestick) bars for eth-like market
-> Params: eth_like_market, period
-
-|Name  |Type   |Mandatory   |Description     |
-|---|---|---|---|
-|market   |String   |Yes   |Market for subscribe. Subscription is possible for one market in single-stream   |
-|period   |Integer   |Yes   |Kline/Candlestick chart intervals: 900, 1800, 3600, 86400   |
-
-Request example:
-```
-{"method":"kline.subscribe_eth","params":["BNB_ETH", 3600],"id":14}
-```
-
-Update message example:
-```
-{
-    "method": "kline.update",
-    "params": [
-        [
-            1657656000,
-            "0.2135",
-            "0.2132",
-            "0.2136",
-            "0.2125",
-            "229.939",
-            "48.98320607",
-            "BNB_ETH"
-        ]
-    ],
-    "id": null
-}
-```
+## Market status
+Market statistic for last 24 hours
 
 - - -
 
-### Unsubscription to the last kline (candlestick) bars for eth-like market
-> Params: none
-
-Request example:
-```
-{"method":"kline.unsubscribe_eth","params":[],"id":15}
-```
-
-- - -
-
-### Subscription to the last kline (candlestick) bars for oth-like market
-> Params: oth_like_market, period
-
-|Name  |Type   |Mandatory   |Description     |
-|---|---|---|---|
-|market   |String   |Yes   |Market for subscribe. Subscription is possible for one market in single-stream   |
-|period   |Integer   |Yes   |Kline/Candlestick chart intervals: 900, 1800, 3600, 86400   |
-
-Request example:
-```
-{"method":"kline.subscribe_oth","params":["BTC_USDT",3600],"id":16}
-```
-
-Update message example:
-```
-{
-    "method": "kline.update",
-    "params": [
-        [
-            1657656000,
-            "19403.12",
-            "19410.29",
-            "19474.19",
-            "19385.5",
-            "689.748784",
-            "13401735.25736168",
-            "BTC_USDT"
-        ]
-    ],
-    "id": null
-}
-```
-
-- - -
-
-### Unsubscription to the last kline (candlestick) bars for oth-like market
-> Params: none
-
-Request example:
-```
-{"method":"kline.unsubscribe_oth","params":[],"id":17}
-```
-
-- - -
-
-### Unsubscription to the last kline (candlestick) bars for all market types
-> Params: none
-
-Request example:
-```
-{"method":"kline.unsubscribe_all","params":[],"id":18}
-```
-
-- - -
-
-## Subscribing/unsubscribing to state update
-Market status for last 24 hours
-
-- - -
-
-### Subscription to the state update for btc-like markets
-> Params: btc_like_market1, btc_like_market2, ...
+### Subscribe
+> Params: market1, market2, ...
 
 |Name  |Type   |Mandatory   |Description     |
 |---|---|---|---|
@@ -446,7 +240,7 @@ Market status for last 24 hours
 
 Request example:
 ```
-{"method":"state.subscribe_btc","params":["ETH_BTC"],"id":19}
+{"method":"state.subscribe","params":["ETH_BTC", "BTC_USDT", "ETH_BUSD"],"id":1}
 ```
 
 Update message example:
@@ -472,130 +266,30 @@ Update message example:
 
 - - -
 
-### Unsubscription to the state update for btc-like markets
+### Unsubscribe
 > Params: none
 
 Request example:
 ```
-{"method":"state.unsubscribe_btc","params":[],"id":20}
+{"method":"state.unsubscribe","params":[],"id":1}
 ```
 
 - - -
 
-### Subscription to the state update for eth-like markets
-> Params: eth_like_market1, eth_like_market2, ...
+## Deals
+
+- - -
+
+### Subscribe
+> Params: market1, market2, ...
 
 |Name  |Type   |Mandatory   |Description     |
 |---|---|---|---|
-|market   |String   |Yes   |Markets for subscribe. Subscription is possible for several markets in single-stream  |
+|market   |String   |Yes   |Markets for subscribe.  |
 
 Request example:
 ```
-{"method":"state.subscribe_eth","params":["BNB_ETH"],"id":21}
-```
-
-Update message example:
-```
-{
-    "method": "state.update",
-    "params": [
-        "BNB_ETH",
-        {
-            "low": "0.20927",
-            "last": "0.2107",
-            "period": 86400,
-            "close": "0.2107",
-            "high": "0.2141",
-            "volume": "15189.947",
-            "open": "0.2095",
-            "deal": "3213.38824163"
-        }
-    ],
-    "id": null
-}
-```
-
-- - -
-
-### Unsubscription to the state update for eth-like markets
-> Params: none
-
-Request example:
-```
-{"method":"state.unsubscribe_eth","params":[],"id":22}
-```
-
-- - -
-
-### Subscription to the state update for oth-like markets
-> Params: oth_like_market1, oth_like_market2, ...
-
-|Name  |Type   |Mandatory   |Description     |
-|---|---|---|---|
-|market   |String   |Yes   |Markets for subscribe. Subscription is possible for several markets in single-stream  |
-
-Request example:
-```
-{"method":"state.subscribe_oth","params":["ETH_USDT"],"id":23}
-```
-
-Update message example:
-```
-{
-    "method": "state.update",
-    "params": [
-        "ETH_USDT",
-        {
-            "deal": "322201138.0683717",
-            "low": "1033.46",
-            "last": "1073.4",
-            "period": 86400,
-            "open": "1067.76",
-            "volume": "303637.15676",
-            "high": "1088.83",
-            "close": "1073.4"
-        }
-    ],
-    "id": null
-}
-```
-
-- - -
-
-### Unsubscription to the state update for oth-like markets
-> Params: none
-
-Request example:
-```
-{"method":"state.unsubscribe_oth","params":[],"id":24}
-```
-
-- - -
-
-### Unsubscription to the state update for all markets
-> Params: none
-
-Request example:
-```
-{"method":"price.unsubscribe_all","params":[],"id":25}
-```
-
-- - -
-
-## Subscribing/unsubscribing to deals update for markets
-
-- - -
-
-### Subscription to deals update for btc-like markets
-> Params: btc_like_market1, btc_like_market2, ...
-
-|Name  |Type   |Mandatory   |Description     |
-|---|---|---|---|
-|market   |String   |Yes   |Markets for subscribe. Subscription is possible for several markets in single-stream  |
-
-Request example:
-```
-{"method":"deals.subscribe_btc","params":["ETH_BTC"],"id":26}
+{"method":"deals.subscribe","params":["ETH_BTC", "BTC_USDT", "ETH_BUSD"],"id":1}
 ```
 
 Update message example:
@@ -627,105 +321,10 @@ Update message example:
 
 - - -
 
-### Unsubscription to deals update for btc-like markets
+### Unsubscribe
 > Params: none
 
 Request example:
 ```
-{"method":"deals.unsubscribe_btc","params":[],"id":27}
-```
-
-- - -
-
-### Subscription to deals update for eth-like markets
-> Params: eth_like_market1, eth_like_market2, ...
-
-|Name  |Type   |Mandatory   |Description     |
-|---|---|---|---|
-|market   |String   |Yes   |Markets for subscribe. Subscription is possible for several markets in single-stream  |
-
-Request example:
-```
-{"method":"deals.subscribe_eth","params":["BNB_ETH"],"id":28}
-```
-
-Update message example:
-```
-{
-    "method": "deals.update",
-    "params": [
-        "BNB_ETH",
-        [
-            {
-                "id": 3132274915,
-                "amount": "0.882",
-                "price": "0.2097",
-                "time": 1657713307.7137561,
-                "type": "sell"
-            },
-            {
-                "id": 3132274890,
-                "amount": "1.205",
-                "price": "0.2097",
-                "time": 1657713307.5918369,
-                "type": "sell"
-            }
-        ]
-    ],
-    "id": null
-}
-```
-
-- - -
-
-### Unsubscription to deals update for eth-like markets
-> Params: none
-
-Request example:
-```
-{"method":"deals.unsubscribe_eth","params":[],"id":29}
-```
-
-- - -
-
-### Subscription to deals update for oth-like markets
-> Params: oth_like_market1, oth_like_market2, ...
-
-|Name  |Type   |Mandatory   |Description     |
-|---|---|---|---|
-|market   |String   |Yes   |Markets for subscribe. Subscription is possible for several markets in single-stream  |
-
-Request example:
-```
-{"method":"deals.subscribe_oth","params":["BTC_USDT"],"id":30}
-```
-
-Update message example:
-```
-{
-    "method": "deals.update",
-    "params": [
-        "BTC_USDT",
-        [
-            {
-                "id": 3132383632,
-                "price": "19851.09",
-                "amount": "0.00016",
-                "time": 1657713935.5847681,
-                "type": "sell"
-            }
-        ]
-    ],
-    "id": null
-}
-```
-
-- - -
-
-### Unsubscription to deals update for oth-like markets
-> Params: none
-
-Request example:
-```
-{"method":"deals.unsubscribe_oth","params":[],"id":31}
+{"method":"deals.unsubscribe","params":[],"id":1}
 ```

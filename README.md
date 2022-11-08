@@ -1,1 +1,1 @@
-# P2B-WSS-Public
+# P2B WebSocket documentation
